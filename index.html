@@ -5,23 +5,25 @@
      <link rel="icon"  href="icon.ico"> </link>
      <style>
          *{margin:auto;text-align:center; font-size:2vw;font-family:verdana;}
-         body{background-color:linen;display:flex;justify-content:center;align-items:center;}
+         body{background-color:linen;}
          .container{display:flex;background-color:#ddadaf;height:450px;width:60%;border:1px solid black;display:inline-block;padding:10px;border-radius:40px;justify-content:center;align-content:center;}
          input[type="submit"]{border:1px solid black;border-radius:20px;background-color:#b5651d;color:white;padding:10px;margin:4px;height:10vh;width:10vw;}
          input[type="number"] {border:2px solid black;padding:10px;}
-         h1 {background-color:#ba8759;border:1px solid black;display:inline-block;border-radius:25px;padding:10px;width:40%;}
+         h1 {background-color:#ba8759;border:1px solid black;display:inline-block;border-radius:25px;padding:10px;width:40%;margin-top:50px;}
      </style>
 </head>
 <body>
+     <h1> Basic Calculator </h1> <br/><br/>
      <div class="container">
-         <h1> Basic Calculator </h1> <br/><br/>
+         
          <form onsubmit="calculate()">
             <input type ="number"  step="any"  placeholder="Enter first number" id="num1" /> <br/><br/>
             <input type ="number"  step="any"  placeholder="Enter second number" id="num2" /> <br/><br/>
             <input type ="submit" value="Add" />
             <input type ="submit" value="Subtract" /> 
             <input type ="submit" value="Multiply" /> 
-            <input type ="submit" value="Divide" /> 
+            <input type ="submit" value="Divide" />
+            <input type ="submit" value="Modulus" />
 
          </form> <br/>
 
@@ -97,7 +99,7 @@ else if(action === "Divide")
   let n1 = parseFloat(num1.value);
   let n2 = parseFloat(num2.value);
   let result ="";
-  if (n1 === 0 || n2 === 0 )
+  if ( n2 === 0 )
      msg.innerHTML = "Error in Division. Cannot divide by zero.";
   else
   result = n1/n2;
@@ -105,8 +107,23 @@ else if(action === "Divide")
           msg.innerHTML = "Quotient is " + result.toFixed(3) + " and it is even";
   else
           msg.innerHTML = "Quotient is " + result.toFixed(3) + " and it is odd";
-
 }
+
+else if (action === "Modulus")
+{
+ let n1 = parseFloat(num1.value);
+ let n2 = parseFloat(num2.value);
+ let result ="";
+  if ( n2 === 0 )
+     msg.innerHTML = "Value is undefined. ";
+  else
+  result = n1%n2;
+  if(result % 2 === 0)
+          msg.innerHTML = "Remainder is " + result.toFixed(3) + " and it is even";
+  else
+          msg.innerHTML = "Remainder is " + result.toFixed(3) + " and it is odd";
+}
+     
 }
 </script>
 </body>
